@@ -16,12 +16,15 @@ var wg sync.WaitGroup
 //}
 
 func main() {
-	wg.Add(100)
-	for i := 0; i < 100; i++ { //creates 10 million threads. this can be altered to put different load on the CPU
-		go calc() //calls thread to calculate the value of pi
+	for {
+		wg.Add(10)
+		for i := 0; i < 10; i++ { //creates 10 million threads. this can be altered to put different load on the CPU
+			go calc() //calls thread to calculate the value of pi
+		}
+
+		wg.Wait()
 	}
 
-	wg.Wait()
 }
 
 func calc() { //function to calculate the value of pi
