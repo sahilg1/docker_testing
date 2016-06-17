@@ -16,8 +16,8 @@ var wg sync.WaitGroup
 //}
 
 func main() {
-	wg.Add(10000000)
-	for i := 0; i < 10000000; i++ { //creates 10 million threads. this can be altered to put different load on the CPU
+	wg.Add(100)
+	for i := 0; i < 100; i++ { //creates 10 million threads. this can be altered to put different load on the CPU
 		go calc() //calls thread to calculate the value of pi
 	}
 
@@ -31,7 +31,7 @@ func calc() { //function to calculate the value of pi
 	var sign = 1.0
 	for k := 0; k < N; k++ {
 		term = float64((1.0) / (float64(2.0)*float64(k) + float64(1.0)))
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(5 * time.Millisecond)
 		sum = sum + float64(sign)*term
 		sign = -sign
 	}

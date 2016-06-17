@@ -3,12 +3,12 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "sahilg1/go_task1:v1",
+      "image": "sahilg1/go_task1:latest",
       "network": "BRIDGE",
       "forcePullImage": true
     }
   },
-  "cpus": 0.1,
-  "mem": 256.0,
+  "cpus": 0.5,
+  "mem": 512.0,
   "instances": 1
 }
