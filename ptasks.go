@@ -50,16 +50,17 @@ func calc() { //function to calculate the value of pi
 
 //This function checks the value of the S3 bucket to check to stop or continue running
 func checkval() bool {
-	res, err := http.Get("https://s3.amazonaws.com/sahgupta-booster-stress-test/s3_file.txt")
+	res, err := http.Get("https://s3.amazonaws.com/sahgupta-stress-test/s3file.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 	scanner := bufio.NewScanner(res.Body)
-	defer res.Body.Close()
 	scanner.Scan()
 	fmt.Println(scanner.Text())
 	if scanner.Text() == "stop" || scanner.Text() == "Stop" {
+		res.Body.Close()
 		return false
 	}
+	res.Body.Close()
 	return true
 }
